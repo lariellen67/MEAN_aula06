@@ -1,0 +1,26 @@
+{
+  "name": "dswa5-02-ac",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Larissa Ellen Gomes Marques"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/lariellen67/MEAN_aula04",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.7",
+    "angular-route": "1.3.20",
+    "bootstrap": "^4.5.2",
+    "angular-resource": "1.3"
+  },
+  "resolutions": {
+    "angular": "1.7"
+  }
+}

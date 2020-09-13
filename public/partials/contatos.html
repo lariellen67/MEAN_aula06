@@ -1,0 +1,48 @@
+<div class="jumbotron ng-scope">
+  <img style="float: left" src="https://dswa5-01-ac.herokuapp.com/Logo.jpg" />
+  <h1 class="text-center">Bem vindo ao IFSP</h1>
+  <h3 class="text-center">Lista de Contatos</h3>
+</div>
+<nav class="navbar navbar-expand navbar-dark bg-dark ng-scope">
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#/contatos"
+          >Contatos <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!/cursos">Cursos</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0 ng-pristine ng-valid">
+      <input
+        ng-model="filtro"
+        type="search"
+        placeholder="Digite parte do nome..."
+        class="form-control ng-pristine ng-untouched ng-valid"
+      />
+    </form>
+  </div>
+</nav>
+<br class="ng-scope" />
+<button class="btn btn-primary" ng-click="incrementa()">Novo</button>
+<br class="ng-scope" />
+<br class="ng-scope" />
+<p>Contatos cadastrados: {{contatos.length}}</p>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th class="text-center">Ação</th>
+    </tr>
+    <tr ng-repeat="contato in contatos | filter: filtro">
+      <td><a>{{contato.nome}}</a></td>
+      <td>{{contato.email}}</td>
+      <td class="text-center">
+        <button class="btn btn-warning">Remover</button>
+      </td>
+    </tr>
+  </table>
+</div>
