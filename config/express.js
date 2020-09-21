@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var load = require('express-load');
 
-module.exports = function() {
+module.exports = function () {
   var app = express();
   var porta = process.env.PORT || 8080;
   app.set('port', porta);
@@ -15,10 +15,7 @@ module.exports = function() {
   app.set('view engine', 'ejs');
   app.set('views', './app/views');
 
-  load('models', { cwd: 'app' })
-    .then('controllers')
-    .then('routes')
-    .into(app);
+  load('models', { cwd: 'app' }).then('controllers').then('routes').into(app);
 
   return app;
 };

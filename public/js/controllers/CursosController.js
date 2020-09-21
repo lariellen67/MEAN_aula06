@@ -16,20 +16,14 @@ angular
       );
     }
 
-    $scope.cursos = [
-      {
-        _id: 1,
-        nome: 'Análise e Desenvolvimento de Sistemas',
-        coord: 'thiago.homem@ifsp.edu.br',
-      },
-      { _id: 2, nome: 'Gestão Pública', coord: 'felipe.basile@ifsp.edu.br' },
-      { _id: 3, nome: 'Letras', coord: 'theresa@ifsp.edu.br' },
-      {
-        _id: 4,
-        nome: 'Engenharia da Produção',
-        coord: 'rita@ifsp.edu.br',
-      },
-    ];
-
     buscaCursos();
+
+    $scope.remove = function (curso) {
+      console.log(curso);
+      Curso.delete({ id: curso._id }, buscaCursos, function (error) {
+        console.log('Não foi possível remover o curso');
+        console.log(error);
+        $scope.mensagem = { texto: 'Não foi possível remover o contato' };
+      });
+    };
   });

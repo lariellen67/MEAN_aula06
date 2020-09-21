@@ -3,25 +3,32 @@ angular
   .controller('ContatosController', function ($resource, $scope) {
     $scope.contatos = [];
     $scope.filtro = '';
-    const Contato = $resource('/contatos');
+    $scope.mensagem = { texto: '' };
+    const Contato = $resource('/contatos/:id');
     function buscaContatos() {
       Contato.query(
         function (contatos) {
           $scope.contatos = contatos;
+          $scope.mensagem = {};
         },
         function (error) {
           console.log('Não foi possível obter a lista de contatos');
           console.log(error);
+          $scope.mensagem = {
+            texto: 'Não foi possível obter a lista de contatos',
+          };
         }
       );
     }
 
-    $scope.contatos = [
-      { _id: 1, nome: 'Larissa Marques', email: 'larissa.marques@ifsp.edu.br' },
-      { _id: 2, nome: 'Daniel Samarone', email: 'daniel.samarone@ifsp.edu.br' },
-      { _id: 3, nome: 'Gabriela Mota', email: 'gabriela.mota@ifsp.edu.br' },
-      { _id: 4, nome: 'Rodrigo Inoue', email: 'rodrigo.inoue@ifsp.edu.br' },
-    ];
-
     buscaContatos();
+
+    $scope.remove = function (contato) {
+      console.log(contato);
+      Contato.delete({ id: contato._id }, buscaContatos, function (error) {
+        console.log('Não foi possível remover o contato');
+        console.log(error);
+        $scope.mensagem = { texto: 'Não foi possível remover o contato' };
+      });
+    };
   });

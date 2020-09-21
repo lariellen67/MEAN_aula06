@@ -41,7 +41,9 @@
       <td><a>{{curso.nome}}</a></td>
       <td>{{curso.coord}}</td>
       <td class="text-center">
-        <button class="btn btn-warning">Remover</button>
+        <button ng-click="remove(curso)" class="btn btn-warning">
+          Remover
+        </button>
       </td>
     </tr>
   </table>
