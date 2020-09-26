@@ -4,34 +4,38 @@
   <h1 class="text-center">Bem vindo ao IFSP</h1>
   <h3 class="text-center">Lista de Contatos</h3>
 </div>
-<nav class="navbar navbar-expand navbar-dark bg-dark ng-scope">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="collapse navbar-collapse" id="navbar">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#/contatos"
+        <a class="nav-link" href="/#/contatos"
           >Contatos <span class="sr-only">(current)</span></a
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#!/cursos">Cursos</a>
+        <a class="nav-link" href="/#/cursos">Cursos</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-md-0 ng-pristine ng-valid">
       <input
+        class="form-control ng-pristine ng-untouched ng-valid"
         ng-model="filtro"
         type="search"
         placeholder="Digite parte do nome..."
-        class="form-control ng-pristine ng-untouched ng-valid"
       />
     </form>
   </div>
 </nav>
+
 <br class="ng-scope" />
 <button class="btn btn-primary" ng-click="incrementa()">Novo</button>
 <br class="ng-scope" />
 <br class="ng-scope" />
+
 <p ng-show="contatos.length">Contatos cadastrados: {{contatos.length}}</p>
-<p class="text-info" ng-hide="contatos.length">Não há contatos cadastrados</p>
+<p class="text-danger" ng-hide="contatos.length">Não há contatos cadastrados</p>
+
 <div class="table-responsive">
   <table class="table table-hover">
     <tr>

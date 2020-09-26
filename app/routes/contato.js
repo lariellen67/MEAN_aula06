@@ -3,6 +3,6 @@ module.exports = function (app) {
   app.route('/contatos').get(controller.listaContatos);
   app
     .route('/contatos/:id')
-    .get(controller.obtemContato)
+    .get(controller.obtemContatos)
     .delete(controller.removeContato);
 };

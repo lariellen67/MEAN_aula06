@@ -1,21 +1,21 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var load = require('express-load');
+const express = require("express");
+const bodyParser = require("body-parser");
+const load = require("express-load");
 
 module.exports = function () {
-  var app = express();
-  var porta = process.env.PORT || 8080;
-  app.set('port', porta);
+  const app = express();
+  const port = process.env.PORT || 8080;
 
-  app.use(express.static('./public'));
+  app.set("port", port);
+  app.use(express.static("./public"));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.use(require('method-override')());
+  app.use(require("method-override")());
 
-  app.set('view engine', 'ejs');
-  app.set('views', './app/views');
+  app.set("view engine", "ejs");
+  app.set("views", "./app/views");
 
-  load('models', { cwd: 'app' }).then('controllers').then('routes').into(app);
+  load("models", { cwd: "app" }).then("controllers").then("routes").into(app);
 
   return app;
 };

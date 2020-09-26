@@ -1,33 +1,35 @@
 angular
   .module('ifsp')
-  .controller('ContatosController', function ($resource, $scope) {
+  .controller('ContatosController', function ($scope, $resource) {
     $scope.contatos = [];
     $scope.filtro = '';
     $scope.mensagem = { texto: '' };
+
     const Contato = $resource('/contatos/:id');
-    function buscaContatos() {
+
+    function buscarContatos() {
       Contato.query(
         function (contatos) {
           $scope.contatos = contatos;
           $scope.mensagem = {};
         },
         function (error) {
-          console.log('Não foi possível obter a lista de contatos');
-          console.log(error);
+          console.log('Não foi possivel obter a lista de contatos');
+          console.error(error);
           $scope.mensagem = {
-            texto: 'Não foi possível obter a lista de contatos',
+            texto: 'Não foi possivel objer a lista de contatos',
           };
         }
       );
     }
 
-    buscaContatos();
+    buscarContatos();
 
     $scope.remove = function (contato) {
       console.log(contato);
-      Contato.delete({ id: contato._id }, buscaContatos, function (error) {
-        console.log('Não foi possível remover o contato');
-        console.log(error);
+      Contato.delete({ id: contato._id }, buscarContatos, function (error) {
+        console.log('Não foi possivel remover o contato');
+        console.error(error);
         $scope.mensagem = { texto: 'Não foi possível remover o contato' };
       });
     };

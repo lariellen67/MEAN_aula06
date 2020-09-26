@@ -1,8 +1,8 @@
 module.exports = function (app) {
-  const controller = app.controllers.curso;
+  var controller = app.controllers.curso;
   app.route('/cursos').get(controller.listaCursos);
   app
     .route('/cursos/:id')
-    .get(controller.obtemCurso)
+    .get(controller.obtemCursos)
     .delete(controller.removeCurso);
 };
